@@ -6,7 +6,7 @@ COPY --from=upstream /usr/bin/v2ray /usr/bin/v2ray
 RUN set -xe && \
     apk add --no-cache upx && \
     upx --lzma /usr/bin/v2ray
-
+COPY config.json /etc/v2ray/config.json
 FROM alpine:3
 COPY --from=build /usr/bin/v2ray /usr/bin/v2ray
 RUN apk add --no-cache tzdata && \
