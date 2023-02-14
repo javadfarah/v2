@@ -14,4 +14,4 @@ RUN apk add --no-cache tzdata && \
     wget -q -O /usr/bin/geoip.dat https://github.com/Loyalsoldier/geoip/raw/release/geoip-only-cn-private.dat
 
 ENV TZ=Asia/Shanghai
-CMD [ "/usr/bin/v2ray", "-config", "/etc/v2ray/config.json" ]
+CMD [ "/usr/bin/v2ray","run" ,"-config", "/etc/v2ray/config.json" ]
