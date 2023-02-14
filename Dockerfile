@@ -1,5 +1,5 @@
 ARG VERSION
-FROM v2fly/v2fly-core:${VERSION:-v5.3.0} as upstream
+FROM v2fly/v2fly-core:latest as upstream
 
 FROM alpine:3 as build
 COPY --from=upstream /usr/bin/v2ray /usr/bin/v2ray
