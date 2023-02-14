@@ -1,19 +1,27 @@
+FROM ubuntu:latest as builder
+
+RUN apt-get update
+RUN apt-get install curl -y
+RUN curl -L -o /tmp/go.sh https://install.direct/go.sh
+RUN chmod +x /tmp/go.sh
+RUN /tmp/go.sh
+
 FROM alpine:latest
 
-ARG V2RAY_VERSION=5.3.0
+LABEL maintainer "Darian Raymond <admin@v2ray.com>"
 
-RUN apk --no-cache add wget tar \
- && wget https://github.com/v2fly/v2ray-core/releases/download/v${V2RAY_VERSION}/v2ray-linux-64.zip \
- && unzip v2ray-linux-64.zip \
- && rm v2ray-linux-64.zip \
- && mkdir -p /usr/bin/v2ray /etc/v2ray \
- && mv v2ray v2ctl geoip.dat geosite.dat /usr/bin/v2ray \
- && chmod +x /usr/bin/v2ray/v2ray /usr/bin/v2ray/v2ctl \
- && wget https://raw.githubusercontent.com/v2fly/domain-list-community/release/dlc.dat -O /usr/bin/v2ray/dlc.dat \
- && wget https://raw.githubusercontent.com/v2fly/domain-list-community/release/geosite.dat -O /usr/bin/v2ray/geosite.dat
-
+COPY --from=builder /usr/bin/v2ray/v2ray /usr/bin/v2ray/
+COPY --from=builder /usr/bin/v2ray/v2ctl /usr/bin/v2ray/
+COPY --from=builder /usr/bin/v2ray/geoip.dat /usr/bin/v2ray/
+COPY --from=builder /usr/bin/v2ray/geosite.dat /usr/bin/v2ray/
 COPY config.json /etc/v2ray/config.json
 
-EXPOSE 80
+RUN set -ex && \
+    apk --no-cache add ca-certificates && \
+    mkdir /var/log/v2ray/ &&\
+    chmod +x /usr/bin/v2ray/v2ctl && \
+    chmod +x /usr/bin/v2ray/v2ray
 
-CMD ["/usr/bin/v2ray/v2ray", "-config=/etc/v2ray/config.json"]
+ENV PATH /usr/bin/v2ray:$PATH
+
+CMD ["v2ray", "-config=/etc/v2ray/config.json"]
