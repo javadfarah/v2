@@ -7,34 +7,30 @@
         "clients": [
           {
             "id": "00f03e35-60cc-455f-81a3-1a3f24d95a13",
-            "level": 0,
             "flow": "xtls-rprx-direct"
           }
         ],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 1234,
-            "xver": 1
-          }
-        ]
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
           "path": "/26b40554-7e09-4c15-a656-693bf127ac9b",
           "headers": {
             "Host": "farah2.darkube.app"
           }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "serverName": "farah2.darkube.app"
         }
       }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom",
-      "settings": {}
+      "protocol": "freedom"
     }
   ]
 }
