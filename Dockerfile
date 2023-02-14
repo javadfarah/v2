@@ -6,12 +6,11 @@ COPY --from=upstream /usr/bin/v2ray /usr/bin/v2ray
 RUN set -xe && \
     apk add --no-cache upx && \
     upx --lzma /usr/bin/v2ray
-COPY . /etc/v2ray/
 FROM alpine:3
 COPY --from=build /usr/bin/v2ray /usr/bin/v2ray
 RUN apk add --no-cache tzdata && \
     wget -q -O /usr/bin/geosite.dat https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat && \
     wget -q -O /usr/bin/geoip.dat https://github.com/Loyalsoldier/geoip/raw/release/geoip-only-cn-private.dat
-
+COPY . /etc/v2ray/
 ENV TZ=Asia/Shanghai
 CMD [ "/usr/bin/v2ray","run" ,"-config", "/etc/v2ray/config.json" ]
