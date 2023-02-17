@@ -1,16 +1,17 @@
-ARG VERSION
-FROM v2fly/v2fly-core:latest as upstream
+#FROM debian:latest
+FROM nginx:1.22
+RUN apt-get update && apt-get install -y init nano curl net-tools telnet 
+RUN curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+RUN curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh
+RUN bash install-release.sh
+RUN bash install-dat-release.sh
+RUN systemctl enable v2ray
 
-FROM alpine:3 as build
-COPY --from=upstream /usr/bin/v2ray /usr/bin/v2ray
-RUN set -xe && \
-    apk add --no-cache upx && \
-    upx --lzma /usr/bin/v2ray
-FROM alpine:3
-COPY --from=build /usr/bin/v2ray /usr/bin/v2ray
-RUN apk add --no-cache tzdata && \
-    wget -q -O /usr/bin/geosite.dat https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat && \
-    wget -q -O /usr/bin/geoip.dat https://github.com/Loyalsoldier/geoip/raw/release/geoip-only-cn-private.dat
-COPY . /etc/v2ray/
-ENV TZ=Asia/Shanghai
-CMD [ "/usr/bin/v2ray","run" ,"-config", "/etc/v2ray/config.json" ]
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY config.json /usr/local/etc/v2ray/config.json
+#COPY privateKey.key /etc/v2ray/v2ray.key
+#COPY certificate.crt /etc/v2ray/v2ray.crt
+
+CMD service nginx start && /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json
+#CMD ["nginx", "-g", "daemon off;"]
+# && /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json
