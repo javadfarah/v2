@@ -3,7 +3,7 @@ FROM nginx:1.22
 
 # Install necessary tools and Python
 RUN apt-get update && \
-    apt-get install -y init nano curl net-tools telnet python3 python3-pip && \
+    apt-get install -y init nano curl procps net-tools telnet python3 python3-pip && \
     curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh && \
     curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh && \
     bash install-release.sh && \
