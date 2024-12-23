@@ -28,4 +28,4 @@ WORKDIR /app
 EXPOSE 80 443 8080
 
 # Start Nginx and V2Ray services, then run the Python application
-CMD service nginx start && /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json && python3 /app/main.py
+CMD service nginx start & /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json & python3 /app/main.py
