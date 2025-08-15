@@ -1,0 +1,34 @@
+{
+  "log": {
+    "loglevel": "info",
+    "access": "/var/log/v2ray/access.log",
+    "error": "/var/log/v2ray/error.log"
+  },
+  "inbounds": [
+    {
+      "port": 10087,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb",
+            "email": "user@domain"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/static/js/app"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
