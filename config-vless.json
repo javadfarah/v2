@@ -7,25 +7,15 @@
   "inbounds": [
     {
       "port": 10086,
-      "listen": "127.0.0.1",
       "protocol": "vless",
       "settings": {
-        "clients": [
-          {
-            "id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb",
-            "email": "user@example.com"
-          }
-        ],
+        "clients": [{"id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb", "email": "25@tank.ir"}],
         "decryption": "none"
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
-          "path": "/ws-path-random-12345",
-          "headers": {
-            "Host": ""
-          }
+          "path": "/wss-abc123xyz"
         }
       }
     }
@@ -33,26 +23,7 @@
   "outbounds": [
     {
       "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
+      "settings": {}
     }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "blocked"
-      }
-    ]
-  }
+  ]
 }
