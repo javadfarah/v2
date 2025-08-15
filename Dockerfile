@@ -8,7 +8,7 @@ RUN bash install-dat-release.sh
 RUN systemctl enable v2ray
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY config.json /usr/local/etc/v2ray/config.json
+COPY config2.json /usr/local/etc/v2ray/config.json
 #COPY privateKey.key /etc/v2ray/v2ray.key
 #COPY certificate.crt /etc/v2ray/v2ray.crt
 
