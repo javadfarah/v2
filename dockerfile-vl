@@ -5,7 +5,7 @@ RUN curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/ins
 RUN bash install-dat-release.sh
 RUN systemctl enable xray
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY config.json /usr/local/etc/xray/config.json
+COPY nginx-vless.conf /etc/nginx/nginx.conf
+COPY config-vless.json /usr/local/etc/xray/config.json
 
 CMD service nginx start && /usr/local/bin/xray run -config /usr/local/etc/xray/config.json
