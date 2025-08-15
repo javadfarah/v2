@@ -4,7 +4,9 @@ RUN curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh | b
 RUN curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh
 RUN bash install-dat-release.sh
 RUN systemctl enable xray
-
+RUN mkdir -p /var/log/v2ray
+RUN chown -R www-data:www-data /var/log/v2ray
+RUN chmod -R 755 /var/log/v2ray
 COPY nginx-vless.conf /etc/nginx/nginx.conf
 COPY config-vless.json /usr/local/etc/xray/config.json
 
