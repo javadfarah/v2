@@ -13,6 +13,11 @@
       },
       "streamSettings": {
         "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "www.mehrnews.com",
+          "allowInsecure": true
+        },
         "wsSettings": {
         "path": "/socket"
         }
