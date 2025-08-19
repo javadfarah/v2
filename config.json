@@ -7,9 +7,9 @@
   "inbounds": [
     {
       "port": 10086,
-      "protocol": "vmess",
+      "protocol": "vless",
       "settings": {
-        "clients": [{"id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb", "alterId": 25, "email": "25@tank.ir"}]
+        "clients": [{"id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb", "email": "25@tank.ir"}]
       },
       "streamSettings": {
         "network": "ws",
