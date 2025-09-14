@@ -47,7 +47,7 @@
         "allowInsecure": true
     },
     "grpcSettings": {
-        "serviceName": "api/v1/test_api"
+        "serviceName": "apiv1test_api"
     }
 }
     }
