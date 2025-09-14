@@ -40,12 +40,17 @@
         ],
         "decryption": "none"
       },
-      "streamSettings": {
-        "network": "grpc",
-        "grpcSettings": {
-          "serviceName": "grpc_service"
-        }
-      }
+"streamSettings": {
+    "network": "grpc",
+    "security": "tls",
+    "tlsSettings": {
+        "serverName": "www.mehrnews.com",
+        "allowInsecure": true
+    },
+    "grpcSettings": {
+        "serviceName": "grpc_service"
+    }
+}
     }
   ],
   "outbounds": [
