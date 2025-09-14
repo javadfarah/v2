@@ -3,13 +3,19 @@
     "loglevel": "debug",
     "access": "/var/log/v2ray/access.log",
     "error": "/var/log/v2ray/error.log"
-},
+  },
   "inbounds": [
     {
       "port": 10086,
       "protocol": "vless",
       "settings": {
-        "clients": [{"id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb", "email": "25@tank.ir"}],"decryption": "none"
+        "clients": [
+          {
+            "id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb",
+            "email": "25@tank.ir"
+          }
+        ],
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "ws",
@@ -18,11 +24,29 @@
           "allowInsecure": true
         },
         "wsSettings": {
-        "path": "/socket"
+          "path": "/socket"
+        }
+      }
+    },
+    {
+      "port": 10087,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "96ba45b5-e4ac-473a-af75-0ba2149e16fb",
+            "email": "25@tank.ir"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "grpc_service"
         }
       }
     }
-
   ],
   "outbounds": [
     {
