@@ -19,10 +19,6 @@
       },
       "streamSettings": {
         "network": "ws",
-        "tlsSettings": {
-          "serverName": "www.mehrnews.com",
-          "allowInsecure": true
-        },
         "wsSettings": {
           "path": "/socket"
         }
@@ -40,16 +36,14 @@
         ],
         "decryption": "none"
       },
-"streamSettings": {
-    "network": "grpc",
-    "tlsSettings": {
-        "serverName": "www.mehrnews.com",
-        "allowInsecure": true
-    },
-    "grpcSettings": {
-        "serviceName": "apiv1test_api"
-    }
-}
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/apiv1test_api",
+          "host": "www.mehrnews.com",
+          "mode": "auto"
+        }
+      }
     }
   ],
   "outbounds": [
