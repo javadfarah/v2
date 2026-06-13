@@ -25,7 +25,7 @@ RUN curl -L https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linu
     unzip xray.zip && \
     mv xray /usr/local/bin/xray && \
     chmod +x /usr/local/bin/xray
-
+RUN mkdir -p /var/log/v2ray
 COPY config.json /usr/local/etc/xray/config.json
 COPY nginx.conf /etc/nginx/nginx.conf
 
