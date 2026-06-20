@@ -40,7 +40,6 @@
         "network": "xhttp",
         "xhttpSettings": {
           "path": "/apiv1test_api",
-          "host": "www.mehrnews.com",
           "mode": "auto"
         }
       }
