@@ -15,7 +15,7 @@
 # CMD service nginx start && /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json
 #CMD ["nginx", "-g", "daemon off;"]
 # && /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json
-FROM nginx:1.22
+FROM nginx:1.28-bookworm
 
 RUN apt-get update && \
     apt-get install -y curl unzip
