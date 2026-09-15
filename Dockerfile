@@ -25,6 +25,8 @@ RUN curl -L https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linu
     unzip xray.zip && \
     mv xray /usr/local/bin/xray && \
     chmod +x /usr/local/bin/xray
+RUN curl -L https://deploy.totallyacdn.com/desktop-apps/2.24.12/windscribe-cli_2.24.12_amd64.deb -o windscribe.deb
+RUN apt-get install -y ./windscribe.deb
 RUN mkdir -p /var/log/v2ray
 COPY config.json /usr/local/etc/xray/config.json
 COPY nginx.conf /etc/nginx/nginx.conf
